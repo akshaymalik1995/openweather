@@ -45,15 +45,15 @@ export default function WeatherCard(props: { weatherData: any }) {
                   ) : (
                     ""
                   )}
-                  <div className="text-[7rem] leading-none relative">
+                  <div className="text-[6rem] md:text-[7rem] leading-none relative">
                     <div>
                       {weatherData.temperature &&
                         weatherData.temperature.toFixed()}
                     </div>
-                    <div className="absolute -right-8  font-bold -top-2 text-5xl">
+                    <div className="absolute -right-3 md:-right-8  font-bold -top-1 md:-top-2 text-3xl md:text-5xl">
                       o
                     </div>
-                    <div className="absolute -right-7 text-gray-400 font-bold bottom-2 text-5xl">
+                    <div className="absolute -right-4 md:-right-7 text-gray-400 font-bold bottom-2 text-3xl  md:text-5xl">
                       c
                     </div>
                   </div>

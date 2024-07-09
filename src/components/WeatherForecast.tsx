@@ -5,6 +5,7 @@ import {
   YAxis,
   CartesianGrid,
   Line,
+  ResponsiveContainer,
 } from "recharts";
 
 import { LuSun } from "react-icons/lu";
@@ -151,88 +152,93 @@ export default function WeatherForecast(props: { forecastData: any }) {
             <div className="text-4xl dark:text-white my-8 mb-16">
               5-Day Forecast
             </div>
-            <table className="w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-300 ">
-              <thead className="text-xs text-gray-700 text-bold uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                  <th className="p-2">Weather</th>
-                  {dailyAverages.map((day: any) => (
-                    <th key={day.date} className="p-2">
-                      {convertDateToDay(day.date)}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="p-2">Temperature</td>
-                  {dailyAverages.map((day: any) => (
-                    <td key={day.date} className="p-2">
-                      {day.temp.toFixed()}°
-                    </td>
-                  ))}
-                </tr>
-                <tr>
-                  <td className="p-2">Feels Like</td>
-                  {dailyAverages.map((day) => (
-                    <td key={day.date} className="p-2">
-                      {day.feels_like?.toFixed()}°
-                    </td>
-                  ))}
-                </tr>
-                <tr>
-                  <td className="p-2">Humidity</td>
-                  {dailyAverages.map((day: any) => (
-                    <td key={day.date} className="p-2">
-                      {day.humidity?.toFixed()}%
-                    </td>
-                  ))}
-                </tr>
-                <tr>
-                  <td className="p-2">Wind Speed</td>
-                  {dailyAverages.map((day: any) => (
-                    <td key={day.date} className="p-2">
-                      {day.wind_speed.toFixed()}m/s
-                    </td>
-                  ))}
-                </tr>
-                <tr>
-                  <td className="p-2">Description</td>
-                  {dailyAverages.map((day: any) => (
-                    <td key={day.date} className="p-2">
-                      {day.weather in weatherIconMapping ? (
-                        <span className="text-xl ">
-                          {weatherIconMapping[day.weather]}
-                        </span>
-                      ) : (
-                        day.weather
-                      )}
-                    </td>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-300 ">
+                <thead className="text-xs text-gray-700 text-bold uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                    <th className="p-2">Weather</th>
+                    {dailyAverages.map((day: any) => (
+                      <th key={day.date} className="p-2">
+                        {convertDateToDay(day.date)}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="p-2">Temperature</td>
+                    {dailyAverages.map((day: any) => (
+                      <td key={day.date} className="p-2">
+                        {day.temp.toFixed()}°
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    <td className="p-2">Feels Like</td>
+                    {dailyAverages.map((day) => (
+                      <td key={day.date} className="p-2">
+                        {day.feels_like?.toFixed()}°
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    <td className="p-2">Humidity</td>
+                    {dailyAverages.map((day: any) => (
+                      <td key={day.date} className="p-2">
+                        {day.humidity?.toFixed()}%
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    <td className="p-2">Wind Speed</td>
+                    {dailyAverages.map((day: any) => (
+                      <td key={day.date} className="p-2">
+                        {day.wind_speed.toFixed()}m/s
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    <td className="p-2">Description</td>
+                    {dailyAverages.map((day: any) => (
+                      <td key={day.date} className="p-2">
+                        {day.weather in weatherIconMapping ? (
+                          <span className="text-xl ">
+                            {weatherIconMapping[day.weather]}
+                          </span>
+                        ) : (
+                          day.weather
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
             <div className="my-8">
-              <LineChart
-                className="my-8"
-                width={600}
-                height={300}
-                data={dataVariationsOverDays.temp}
-              >
-                <XAxis dataKey="date" />
-                <YAxis domain={["dataMin - 3", "dataMax + 3"]} />
-                <Tooltip
-                  content={
-                    <CustomTooltip active={undefined} payload={undefined} />
-                  }
-                />
-                <CartesianGrid stroke="#f5f5f5" />
-                <Line
-                  type="monotone"
-                  dataKey="temp"
-                  stroke="#ff7300"
-                  yAxisId={0}
-                />
-              </LineChart>
+              <ResponsiveContainer width="100%" height={300}>
+                <LineChart
+                  className="my-8"
+                  width={600}
+                  height={300}
+                  data={dataVariationsOverDays.temp}
+                >
+                  <XAxis dataKey="date" />
+                  <YAxis domain={["dataMin - 3", "dataMax + 3"]} />
+                  <Tooltip
+                    content={
+                      <CustomTooltip active={undefined} payload={undefined} />
+                    }
+                  />
+                  <CartesianGrid stroke="#f5f5f5" />
+                  <Line
+                    type="monotone"
+                    dataKey="temp"
+                    stroke="#ff7300"
+                    yAxisId={0}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
           </div>
         </div>
