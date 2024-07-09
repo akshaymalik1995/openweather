@@ -80,7 +80,7 @@ function App() {
         <div className="my-2 flex flex-wrap gap-4">
           {searchHistory.map((item, index) => (
             <div
-              className="items-center dark:bg-gray-800 border shadow flex gap-4 rounded bg-white"
+              className="items-center dark:bg-gray-800 shadow flex gap-4 rounded bg-white"
               key={index}
             >
               <div
@@ -102,7 +102,7 @@ function App() {
 
               <div
                 onClick={() => deleteSearchItem(item.city, item.countryCode)}
-                className="h-full w-8  cursor-pointer hover:bg-red-300 flex bg-red-200 text-red-500 justify-center items-center"
+                className="h-full w-8  cursor-pointer dark:text-blue-500 dark:bg-gray-600 hover:bg-red-300 flex bg-red-200 text-red-500 justify-center items-center"
               >
                 <MdDeleteForever />
               </div>
