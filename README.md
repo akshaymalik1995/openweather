@@ -69,7 +69,6 @@ This command runs the app in development mode. Open [http://localhost:5173](http
 
 After starting the application, you can interact with it as follows:
 
-- **Allow Location Access**: You will prompted to give location access. If you allow, the weather of your current location will appear.
 - **Search for a city**: Use the search form to enter the name of a city. As soon as you start typing, an autocomplete dropdown for cities shall appear. You can choose a city from the dropdown. You can also enter the city name and Press Enter or click the search button to fetch the weather data for that city.
 - **View weather data**: Once a city is searched, its weather data will be displayed. Each city's weather data includes temperature, weather conditon and local time and date for that city.
 
