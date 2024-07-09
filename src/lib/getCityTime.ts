@@ -21,6 +21,6 @@ export default function getCityTime(tzOffsetInSec: number): string {
     const time = time_str.split(" ")[0];
     const [hours, minutes, seconds] = time.split(":");
     console.log(hours, minutes, seconds);
-    return `${hours.padStart(2, "0")}:${minutes.padStart(2, "0")} ${am_pm}`
+    return `${hours.padStart(2, "0")}:${minutes.padStart(2, "0")} ${am_pm ? am_pm : ""}`
     // return cityDate.toLocaleString();
 }
